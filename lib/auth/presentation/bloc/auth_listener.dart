@@ -9,5 +9,4 @@ abstract class AuthListener {
   emailAlreadyInUse();
   userDisabled();
   failed();
-  initial();
 }

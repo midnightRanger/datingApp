@@ -4,6 +4,10 @@ enum AuthState {
   userNotFound,
   wrongPassword,
   weakPassword, 
+  userDisabled,
+  emailAlreadyInUse,
+  operationNotAllowed,
+  invalidEmail,
   failed,
   initial
 }

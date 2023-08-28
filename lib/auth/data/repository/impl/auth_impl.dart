@@ -45,7 +45,7 @@ class AuthRepositoryImpl extends AuthRepository {
           }
       }
     }
-    authListener.successRegister();
+    authListener.successLogin();
     return const ModelResponse(
         error: null, data: UserRegistration, message: "Completely Registered");
   }
