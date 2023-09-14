@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        AppLocalizations.delegate
+      ],
+      supportedLocales: [
+        Locale('en'),
+        Locale('es'),
+        Locale('ru')
+      ],
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.

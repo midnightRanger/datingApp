@@ -1,0 +1,5 @@
+{
+    "helloWorld": "¡Hola Mundo!",
+    "emailErrorMsg": "Dirección de correo electrónico no válida, proporcione un correo electrónico válido.",
+    "passwordErrorMsg": "La contraseña debe tener al menos 6 caracteres."
+}
