@@ -10,5 +10,13 @@
   "passwordErrorMsg": "Password must have at least 6 characters.",
   "@emailErrorMsg": {
     "description": "Average password error message"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "For auth page"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "For auth page"
   }
 }
