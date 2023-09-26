@@ -1,8 +1,6 @@
+import 'package:dating_app/auth/data/repository/utils/clippers/melon_clipper.dart';
 import 'package:dating_app/auth/presentation/bloc/auth_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,12 +21,14 @@ class _AuthStatePage extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthCubit(AuthState.initial),
-      child: AuthScreenWidget(),
+      child: const AuthScreenWidget(),
     );
   }
 }
 
 class AuthScreenWidget extends StatefulWidget {
+  const AuthScreenWidget({super.key});
+
   @override
   _AuthScreenStateWidget createState() => _AuthScreenStateWidget();
 }
@@ -85,7 +85,7 @@ class _AuthScreenStateWidget extends State<AuthScreenWidget> {
               child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(colors: [
                       Color.fromRGBO(210, 31, 95, 100),
                       Color.fromRGBO(253, 251, 171, 100)
@@ -93,26 +93,22 @@ class _AuthScreenStateWidget extends State<AuthScreenWidget> {
                   ),
                   child: SafeArea(
                     child: Container(
-                        padding: EdgeInsets.all(32),
+                        padding: const EdgeInsets.all(64),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            ClipPath(
-                              clipper: melonClipper(),
-                              child: Container(width: 200, height: 200, color: Colors.pink),
-                            )
-
+                            CustomPaint(
+                              size: const Size.fromRadius(50),
+                              painter: WatermelonPainter(),
+                            ),
+                            const SizedBox(height: 50),
                             SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                    child: Text(
-                                        AppLocalizations.of(context)!.login,
-                                        style: TextStyle(
-                                            fontSize: 14, color: Colors.black)),
                                     style: ButtonStyle(
                                         backgroundColor:
-                                            new MaterialStatePropertyAll(
+                                            const MaterialStatePropertyAll(
                                                 Colors.white),
                                         shape: MaterialStateProperty.all<
                                                 RoundedRectangleBorder>(
@@ -120,18 +116,18 @@ class _AuthScreenStateWidget extends State<AuthScreenWidget> {
                                           borderRadius:
                                               BorderRadius.circular(18.0),
                                         ))),
-                                    onPressed: () => null)),
+                                    onPressed: () {},
+                                    child: Text(
+                                        AppLocalizations.of(context)!.login,
+                                        style: const TextStyle(
+                                            fontSize: 14, color: Colors.black)))),
                             Container(height: 15),
                             SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                    child: Text(
-                                        AppLocalizations.of(context)!.register,
-                                        style: TextStyle(
-                                            fontSize: 14, color: Colors.black)),
                                     style: ButtonStyle(
                                         backgroundColor:
-                                            new MaterialStatePropertyAll(
+                                            const MaterialStatePropertyAll(
                                                 Colors.white),
                                         shape: MaterialStateProperty.all<
                                                 RoundedRectangleBorder>(
@@ -139,7 +135,11 @@ class _AuthScreenStateWidget extends State<AuthScreenWidget> {
                                           borderRadius:
                                               BorderRadius.circular(18.0),
                                         ))),
-                                    onPressed: () => null)),
+                                    onPressed: () {},
+                                    child: Text(
+                                        AppLocalizations.of(context)!.register,
+                                        style: const TextStyle(
+                                            fontSize: 14, color: Colors.black)))),
                           ],
                         )),
                   ))));

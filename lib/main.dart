@@ -1,9 +1,14 @@
 import 'package:dating_app/auth/presentation/auth_screen.dart';
+import 'package:dating_app/auth/presentation/bloc/auth_cubit.dart';
+import 'package:dating_app/auth/presentation/bloc/auth_state.dart';
 import 'package:dating_app/firebase_options.dart';
+import 'package:dating_app/globals/provider/app_state_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +22,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    return MultiProvider(
+      providers: [
+        BlocProvider(create: ((context) => 
+          AuthCubit(AuthState.initial))),
+        ChangeNotifierProvider(create: (context)=>AppStateProvider()),
+        ProxyProvider<AppStateProvider, AppRouter)(update: update)
+    ],)
     return MaterialApp(
       localizationsDelegates: [
         AppLocalizations.delegate,
